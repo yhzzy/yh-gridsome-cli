@@ -10,9 +10,10 @@ module.exports = {
     {
       use: '@gridsome/source-strapi',
       options: {
-        apiURL: 'http://localhost:1337',
+        apiURL: 'http://106.75.12.171:1337',
+        // apiURL: 'http://localhost:1337',
         queryLimit: 1000, // Defaults to 100
-        contentTypes: ['post'],
+        contentTypes: ['post', 'gallary'],
         singleTypes: ['journal'],
         // Possibility to login with a Strapi user,
         // when content types are not publicly available (optional).

@@ -13,51 +13,18 @@
       </div>
       <div class="projects">
         <div class="project">
-          <g-link to="/projects/chelsea-landmark/" class="project-link">
-            <img alt="Banana" src="/assets/static/mike-dorner-173502-unsplash.c0dad42.16e7958f24c375d7bd7b08073b4ce000.jpg"
-            width="2560" data-src="/assets/static/mike-dorner-173502-unsplash.c0dad42.16e7958f24c375d7bd7b08073b4ce000.jpg"
-            data-srcset="/assets/static/mike-dorner-173502-unsplash.b6e36c6.16e7958f24c375d7bd7b08073b4ce000.jpg 480w, /assets/static/mike-dorner-173502-unsplash.1c9e94c.16e7958f24c375d7bd7b08073b4ce000.jpg 1024w, /assets/static/mike-dorner-173502-unsplash.f11e5e1.16e7958f24c375d7bd7b08073b4ce000.jpg 1920w, /assets/static/mike-dorner-173502-unsplash.c0dad42.16e7958f24c375d7bd7b08073b4ce000.jpg 2560w"
-            data-sizes="(max-width: 2560px) 100vw, 2560px" class="thumbnail g-image g-image--lazy g-image--loaded"
-            data-v-50cbff3e="" srcset="/assets/static/mike-dorner-173502-unsplash.b6e36c6.16e7958f24c375d7bd7b08073b4ce000.jpg 480w, /assets/static/mike-dorner-173502-unsplash.1c9e94c.16e7958f24c375d7bd7b08073b4ce000.jpg 1024w, /assets/static/mike-dorner-173502-unsplash.f11e5e1.16e7958f24c375d7bd7b08073b4ce000.jpg 1920w, /assets/static/mike-dorner-173502-unsplash.c0dad42.16e7958f24c375d7bd7b08073b4ce000.jpg 2560w"
-            sizes="(max-width: 2560px) 100vw, 2560px">
+          <g-link v-for="gallary in $page.gallaries.edges" :key="gallary.id" to="/projects/chelsea-landmark/" class="project-link">
+            <img :alt="gallary.node.title" :src="gallary.node.img.url">
             <noscript>
               <img src="/assets/static/mike-dorner-173502-unsplash.c0dad42.16e7958f24c375d7bd7b08073b4ce000.jpg"
               class="thumbnail g-image g-image--loaded" width="2560" alt="Banana">
             </noscript>
             <h3 class="project-title">
-              Banana
+              {{ gallary.node.title }}
             </h3>
             <div class="categories">
-              <span class="category">
-                photography
-              </span>
-              <span class="category">
-                pink
-              </span>
-            </div>
-          </g-link>
-        </div>
-        <div class="project">
-          <g-link to="/projects/chelsea-landmark/" class="project-link">
-            <img alt="Banana" src="/assets/static/mike-dorner-173502-unsplash.c0dad42.16e7958f24c375d7bd7b08073b4ce000.jpg"
-            width="2560" data-src="/assets/static/mike-dorner-173502-unsplash.c0dad42.16e7958f24c375d7bd7b08073b4ce000.jpg"
-            data-srcset="/assets/static/mike-dorner-173502-unsplash.b6e36c6.16e7958f24c375d7bd7b08073b4ce000.jpg 480w, /assets/static/mike-dorner-173502-unsplash.1c9e94c.16e7958f24c375d7bd7b08073b4ce000.jpg 1024w, /assets/static/mike-dorner-173502-unsplash.f11e5e1.16e7958f24c375d7bd7b08073b4ce000.jpg 1920w, /assets/static/mike-dorner-173502-unsplash.c0dad42.16e7958f24c375d7bd7b08073b4ce000.jpg 2560w"
-            data-sizes="(max-width: 2560px) 100vw, 2560px" class="thumbnail g-image g-image--lazy g-image--loaded"
-            data-v-50cbff3e="" srcset="/assets/static/mike-dorner-173502-unsplash.b6e36c6.16e7958f24c375d7bd7b08073b4ce000.jpg 480w, /assets/static/mike-dorner-173502-unsplash.1c9e94c.16e7958f24c375d7bd7b08073b4ce000.jpg 1024w, /assets/static/mike-dorner-173502-unsplash.f11e5e1.16e7958f24c375d7bd7b08073b4ce000.jpg 1920w, /assets/static/mike-dorner-173502-unsplash.c0dad42.16e7958f24c375d7bd7b08073b4ce000.jpg 2560w"
-            sizes="(max-width: 2560px) 100vw, 2560px">
-            <noscript>
-              <img src="/assets/static/mike-dorner-173502-unsplash.c0dad42.16e7958f24c375d7bd7b08073b4ce000.jpg"
-              class="thumbnail g-image g-image--loaded" width="2560" alt="Banana">
-            </noscript>
-            <h3 class="project-title">
-              Banana
-            </h3>
-            <div class="categories">
-              <span class="category">
-                photography
-              </span>
-              <span class="category">
-                pink
+              <span v-for="category in gallary.node.categories" :key="category.id" class="category">
+                {{ category.name }}
               </span>
             </div>
           </g-link>
@@ -73,24 +40,9 @@
       </div>
       <div class="latest-journals">
         <div class="container">
-          <g-link to="/journal/gridsome-forestry-cms/" class="journal">
+          <g-link v-for="edge in $page.posts.edges" :key="edge.node.id" :to="`/journal-detail/${edge.node.id}`" class="journal">
             <h3 class="journal-title">
-              Gridsome with Forestry CMS
-            </h3>
-          </g-link>
-          <g-link to="/journal/use-gridsome-vuejs/" class="journal">
-            <h3 class="journal-title">
-              VueJS for your next project
-            </h3>
-          </g-link>
-          <g-link to="/journal/macos-development-environment/" class="journal">
-            <h3 class="journal-title">
-              macOS development environment
-            </h3>
-          </g-link>
-          <g-link to="/journal/a-journal-entry/" class="journal">
-            <h3 class="journal-title">
-              About Typography
+              {{ edge.node.title }}
             </h3>
           </g-link>
         </div>
@@ -99,6 +51,38 @@
 
   </Layout>
 </template>
+
+<page-query>
+query {
+  posts: allStrapiPost (limit: 4, page: 1) @paginate {
+    edges {
+      node {
+        id
+        title
+        intro
+      }
+    }
+  }
+  gallaries: allStrapiGallary {
+    edges {
+      node {
+        id
+        title
+        year
+        img {
+          url
+        }
+        categories {
+          id
+          name
+          slug
+        }
+      }
+    }
+  }
+}
+</page-query>
+
 
 <script>
 export default {
