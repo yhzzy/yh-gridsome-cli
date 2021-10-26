@@ -9,27 +9,19 @@
           <div class="journal-meta">
             <div class="journal-author">
               <span class="label">
-                Author
+                Categories
               </span>
-              <span class="author-name">
-                {{ $page.post.admin_user.lastname }} {{ $page.post.admin_user.firstname }}
+              <span v-for="category in $page.post.categories" :key="category.id" class="category category-detail">
+                {{ category.name }}
               </span>
             </div>
             <div class="journal-date">
               <span class="label">
-                Date
+                Year
               </span>
               <div>
-                {{ $page.post.created_at | date('DD.MMM YYYY') }}
+                {{ $page.post.year | date('YYYY') }}
               </div>
-            </div>
-            <div class="journal-time">
-              <span class="label">
-                Time
-              </span>
-              <span >
-                1 min read
-              </span>
             </div>
           </div>
         </div>
@@ -41,15 +33,16 @@
 
 <page-query>
 query ($id: ID!) {
-  post: strapiPost (id: $id) {
+  post: strapiGallary (id: $id) {
     id
     title
     content
-    admin_user {
-      lastname
-      firstname
+    year
+    categories {
+      id
+      name
+      slug
     }
-    created_at
   }
 }
 </page-query>
@@ -59,7 +52,7 @@ import MarkdownIt from 'markdown-it'
 const md = new MarkdownIt()
 
 export default {
-  name: 'PostPage',
+  name: 'ProjectPage',
   metaInfo () {
     return {
       title: this.$page.post.title,
@@ -76,5 +69,11 @@ export default {
 <style scope>
 .journal:hover {
 	background: transparent;
+}
+.category-detail {
+  margin-right: 0;
+}
+.category-detail:after {
+	content: ","
 }
 </style>

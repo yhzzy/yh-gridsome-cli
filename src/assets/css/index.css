@@ -199,9 +199,6 @@ code[class*=language-]::selection,code[class*=language-]::selection,pre[class*=l
 .project-info>div:last-of-type {
 	margin:0
 }
-.category:after {
-	content:","
-}
 .category:last-of-type:after {
 	content:""
 }

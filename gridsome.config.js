@@ -10,11 +10,11 @@ module.exports = {
     {
       use: '@gridsome/source-strapi',
       options: {
-        apiURL: 'http://106.75.12.171:1337',
+        apiURL: process.env.GRIDSOME_API_URL,
         // apiURL: 'http://localhost:1337',
         queryLimit: 1000, // Defaults to 100
         contentTypes: ['post', 'gallary'],
-        singleTypes: ['journal'],
+        singleTypes: ['journal', 'global', 'homepage'],
         // Possibility to login with a Strapi user,
         // when content types are not publicly available (optional).
         loginData: {
@@ -29,6 +29,12 @@ module.exports = {
       {
         path: '/journal-detail/:id',
         component: './src/templates/Post.vue'
+      }
+    ],
+    StrapiGallary: [
+      {
+        path: '/projects/:id',
+        component: './src/templates/Project.vue'
       }
     ]
   }

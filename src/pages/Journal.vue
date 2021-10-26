@@ -56,6 +56,7 @@ query ($page: Int) {
 import { Pager } from 'gridsome'
 
 export default {
+  name: 'Journal',
   metaInfo: {
     title: 'journal'
   },

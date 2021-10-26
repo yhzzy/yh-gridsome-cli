@@ -4,19 +4,18 @@
     <div class="container">
       <div class="hero">
         <h1 class="hero-title">
-          Simplicity. Aesthetics. Value.
+          {{ $page.homepage.title }}
         </h1>
         <h2 class="hero-subtitle">
-          Hi there, I'm an independent Digital Designer &amp; Art Director focused
-          on digital design for brands that like to have fun.
+          {{ $page.homepage.sub_title }}
         </h2>
       </div>
       <div class="projects">
-        <div class="project">
-          <g-link v-for="gallary in $page.gallaries.edges" :key="gallary.id" to="/projects/chelsea-landmark/" class="project-link">
-            <img :alt="gallary.node.title" :src="gallary.node.img.url">
+        <div v-for="gallary in $page.gallaries.edges" :key="gallary.node.id"  class="project">
+          <g-link :to="`/projects/${gallary.node.id}`" class="project-link">
+            <img :alt="gallary.node.title" :src="`${GRIDSOME_API_URL}${gallary.node.img.url}`">
             <noscript>
-              <img src="/assets/static/mike-dorner-173502-unsplash.c0dad42.16e7958f24c375d7bd7b08073b4ce000.jpg"
+              <img src="/src/assets/images/mike-dorner-173502-unsplash.2665e34.16e7958f24c375d7bd7b08073b4ce000.jpg"
               class="thumbnail g-image g-image--loaded" width="2560" alt="Banana">
             </noscript>
             <h3 class="project-title">
@@ -54,6 +53,10 @@
 
 <page-query>
 query {
+  homepage: strapiHomepage (id: 1) {
+    title
+    sub_title
+  }
   posts: allStrapiPost (limit: 4, page: 1) @paginate {
     edges {
       node {
@@ -75,7 +78,6 @@ query {
         categories {
           id
           name
-          slug
         }
       }
     }
@@ -86,6 +88,7 @@ query {
 
 <script>
 export default {
+  name: 'Index',
   metaInfo: {
     title: 'Index'
   }
