@@ -57,7 +57,7 @@ query {
     title
     sub_title
   }
-  posts: allStrapiPost (limit: 4, page: 1) @paginate {
+  posts: allStrapiPost (perPage: 4, page: 1) @paginate {
     edges {
       node {
         id
